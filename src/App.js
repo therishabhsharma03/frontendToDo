@@ -1,22 +1,33 @@
-import './App.css';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import{HashRouter, Routes, Route} from "react-router-dom";
-import HomePage from "./components/HomePage";
-import EditTask from './components/EditTask';
-import Nav from './components/Nav';
-import CompletedList from './components/CompletedList';
 
+import './App.css';
+
+import Nav from "./component/navbar"
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from "./component/index";
+import CreateTask from './component/createtask';
+import Register from './component/registerUser';
+import Login from './component/login';
+import CompletedList from './component/CompletedList';
+import EditTask from './component/EditTask';
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
-    <div class="container">
+    <div className="App">
       <HashRouter>
-      <Nav/>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/edit-task/:id' element={<EditTask />} />
-          <Route path='/completed-tasks' element={<CompletedList/>} />
-        </Routes>
+        <div>
+        <Nav />
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='*' element={<div>404 Not Found</div>}></Route>
+            <Route path ="/create-task" element={<div><CreateTask/></div>}/>
+            <Route path ="/completed" element={<div><CompletedList/></div>}/>
+            <Route path ="/register" element={<div><Register/></div>}/>
+            <Route path ="/login" element={<div><Login/></div>}/>
+            <Route path='/edit-task/:id' element={<EditTask />} />
+          </Routes>
+        </div>
       </HashRouter>
+      
     </div>
   );
 }
